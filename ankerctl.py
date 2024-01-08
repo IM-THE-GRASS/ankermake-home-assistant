@@ -8,6 +8,8 @@ from cli.mqtt import mqtt_open
 
 from libflagship.mqtt import MqttMsgType
 auth = {'username':"PUT YOUR USERNAME HERE",'password':"PUT YOUR PASSOWRD HERE"}
+mqttIp = "192.168.1.144"
+mqttPort= 1883
 
 class Environment:
 
@@ -59,9 +61,9 @@ def mqtt_monitor(env):
                 name = name[len("ZZ_MQTT_CMD_"):].lower()#
             match obj["commandType"]:
                 case 1003:
-                    paho.mqtt.publish.single("homeassistant/sensor/sensorNozzle/state", """{"temperature":""" + str(round(int(obj['currentTemp']) / 100)) + "}", hostname="192.168.1.144",port=1883, auth= auth)
+                    paho.mqtt.publish.single("homeassistant/sensor/sensorNozzle/state", """{"temperature":""" + str(round(int(obj['currentTemp']) / 100)) + "}", hostname=mqttIp,port=mqttPort, auth= auth)
                 case 1004:
-                    paho.mqtt.publish.single("homeassistant/sensor/sensorHeatbed/state", """{"temperature":""" + str(round(int(obj['currentTemp']) / 100)) + "}", hostname="192.168.1.144",port=1883, auth= auth)
+                    paho.mqtt.publish.single("homeassistant/sensor/sensorHeatbed/state", """{"temperature":""" + str(round(int(obj['currentTemp']) / 100)) + "}", hostname=mqttIp,port=mqttPort, auth= auth)
                 case 1001:
                     #print schedule
                     time_left = str(round(int(obj['time'])))
@@ -81,11 +83,11 @@ def mqtt_monitor(env):
                     print("model name: " + model_name)
                     print("filament total: " + filament_used + " g")
                     print("\n")
-                    paho.mqtt.publish.single("homeassistant/sensor/sensorTimeLeft/state","""{"duration":"""+ time_left + "}", hostname="192.168.1.144",port=1883, auth= auth)
-                    paho.mqtt.publish.single("homeassistant/sensor/sensorTimeElapsed/state","""{"duration":"""+ time_elapsed + "}", hostname="192.168.1.144",port=1883, auth= auth)
-                    paho.mqtt.publish.single("homeassistant/sensor/sensorPercentProgress/state","""{"percent":""" + percent_progress + "}", hostname="192.168.1.144",port=1883, auth= auth)
-                    paho.mqtt.publish.single("homeassistant/sensor/sensorRealSpeed/state", """{"speed":""" + real_speed + "}", hostname="192.168.1.144",port=1883, auth= auth)
-                    paho.mqtt.publish.single("homeassistant/sensor/sensorFilamentUsed/state","""{"weight":""" + filament_used + "}", hostname="192.168.1.144",port=1883, auth= auth)
+                    paho.mqtt.publish.single("homeassistant/sensor/sensorTimeLeft/state","""{"duration":"""+ time_left + "}", hostname=mqttIp,port=mqttPort, auth= auth)
+                    paho.mqtt.publish.single("homeassistant/sensor/sensorTimeElapsed/state","""{"duration":"""+ time_elapsed + "}", hostname=mqttIp,port=mqttPort, auth= auth)
+                    paho.mqtt.publish.single("homeassistant/sensor/sensorPercentProgress/state","""{"percent":""" + percent_progress + "}", hostname=mqttIp,port=mqttPort, auth= auth)
+                    paho.mqtt.publish.single("homeassistant/sensor/sensorRealSpeed/state", """{"speed":""" + real_speed + "}", hostname=mqttIp,port=mqttPort, auth= auth)
+                    paho.mqtt.publish.single("homeassistant/sensor/sensorFilamentUsed/state","""{"weight":""" + filament_used + "}", hostname=mqttIp,port=mqttPort, auth= auth)
                 #case _:
                     
 

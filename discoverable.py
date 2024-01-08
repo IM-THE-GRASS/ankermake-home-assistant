@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import paho.mqtt.publish
 auth = {'username':"PUT YOUR USERNAME HERE",'password':"PUT YOUR PASSOWRD HERE"}
+mqttIp = "192.168.1.144"
+mqttPort= 1883
 paho.mqtt.publish.single("homeassistant/sensor/sensorNozzle/config",
 """
 {
@@ -17,7 +19,7 @@ paho.mqtt.publish.single("homeassistant/sensor/sensorNozzle/config",
    }
 }
 """
-, hostname="192.168.1.144",port=1883, auth= auth)
+, hostname=mqttIp,port=mqttPort, auth= auth)
 paho.mqtt.publish.single("homeassistant/sensor/sensorHeatbed/config",
 """
 {
@@ -34,7 +36,7 @@ paho.mqtt.publish.single("homeassistant/sensor/sensorHeatbed/config",
    }
 }
 """
-, hostname="192.168.1.144",port=1883, auth= auth)
+, hostname=mqttIp,port=mqttPort, auth= auth)
 paho.mqtt.publish.single("homeassistant/sensor/sensorTimeElapsed/config",
 """
 {
@@ -51,7 +53,7 @@ paho.mqtt.publish.single("homeassistant/sensor/sensorTimeElapsed/config",
    }
 }
 """
-, hostname="192.168.1.144",port=1883, auth= auth)
+, hostname=mqttIp,port=mqttPort, auth= auth)
 paho.mqtt.publish.single("homeassistant/sensor/sensorTimeLeft/config",
 """
 {
@@ -68,7 +70,7 @@ paho.mqtt.publish.single("homeassistant/sensor/sensorTimeLeft/config",
    }
 }
 """
-, hostname="192.168.1.144",port=1883, auth= auth)
+, hostname=mqttIp,port=mqttPort, auth= auth)
 paho.mqtt.publish.single("homeassistant/sensor/sensorPercentProgress/config",
 """
 {
@@ -85,7 +87,7 @@ paho.mqtt.publish.single("homeassistant/sensor/sensorPercentProgress/config",
    }
 }
 """
-, hostname="192.168.1.144",port=1883, auth= auth)
+, hostname=mqttIp,port=mqttPort, auth= auth)
 paho.mqtt.publish.single("homeassistant/sensor/sensorRealSpeed/config",
 """
 {
@@ -102,7 +104,7 @@ paho.mqtt.publish.single("homeassistant/sensor/sensorRealSpeed/config",
    }
 }
 """
-, hostname="192.168.1.144",port=1883, auth= auth)
+, hostname=mqttIp,port=mqttPort, auth= auth)
 paho.mqtt.publish.single("homeassistant/sensor/sensorFilamentUsed/config",
 """
 {
@@ -119,16 +121,16 @@ paho.mqtt.publish.single("homeassistant/sensor/sensorFilamentUsed/config",
    }
 }
 """
-, hostname="192.168.1.144",port=1883, auth= auth)
+, hostname=mqttIp,port=mqttPort, auth= auth)
 #time_left = "1"
 #time_elapsed = "2.1"
 #filament_used = "5"
 #real_speed = "12"
 #percent_progress = "12"
-#paho.mqtt.publish.single("homeassistant/sensor/sensorTimeLeft/state","""{"duration":"""+ time_left + "}", hostname="192.168.1.144",port=1883, auth= auth)#
-#paho.mqtt.publish.single("homeassistant/sensor/sensorTimeElapsed/state","""{"duration":"""+ time_elapsed + "}", hostname="192.168.1.144",port=1883, auth= auth)#
-#paho.mqtt.publish.single("homeassistant/sensor/sensorPercentProgress/state","""{"percent":""" + percent_progress + "}", hostname="192.168.1.144",port=1883, auth= auth)#
-#paho.mqtt.publish.single("homeassistant/sensor/sensorRealSpeed/state", """{"speed":""" + real_speed + "}", hostname="192.168.1.144",port=1883, auth= auth)
-#paho.mqtt.publish.single("homeassistant/sensor/sensorFilamentUsed/state","""{"weight":""" + filament_used + "}", hostname="192.168.1.144",port=1883, auth= auth)
-#paho.mqtt.publish.single("homeassistant/sensor/sensorNozzle/state", """{"temperature":""" + str(21000 / 100) + "}", hostname="192.168.1.144",port=1883, auth= auth)
-#paho.mqtt.publish.single("homeassistant/sensor/sensorHeatbed/state", """{"temperature":""" + str(21000 / 100) + "}", hostname="192.168.1.144",port=1883, auth= auth)
+#paho.mqtt.publish.single("homeassistant/sensor/sensorTimeLeft/state","""{"duration":"""+ time_left + "}", hostname=mqttIp,port=mqttPort, auth= auth)#
+#paho.mqtt.publish.single("homeassistant/sensor/sensorTimeElapsed/state","""{"duration":"""+ time_elapsed + "}", hostname=mqttIp,port=mqttPort, auth= auth)#
+#paho.mqtt.publish.single("homeassistant/sensor/sensorPercentProgress/state","""{"percent":""" + percent_progress + "}", hostname=mqttIp,port=mqttPort, auth= auth)#
+#paho.mqtt.publish.single("homeassistant/sensor/sensorRealSpeed/state", """{"speed":""" + real_speed + "}", hostname=mqttIp,port=mqttPort, auth= auth)
+#paho.mqtt.publish.single("homeassistant/sensor/sensorFilamentUsed/state","""{"weight":""" + filament_used + "}", hostname=mqttIp,port=mqttPort, auth= auth)
+#paho.mqtt.publish.single("homeassistant/sensor/sensorNozzle/state", """{"temperature":""" + str(21000 / 100) + "}", hostname=mqttIp,port=mqttPort, auth= auth)
+#paho.mqtt.publish.single("homeassistant/sensor/sensorHeatbed/state", """{"temperature":""" + str(21000 / 100) + "}", hostname=mqttIp,port=mqttPort, auth= auth)
